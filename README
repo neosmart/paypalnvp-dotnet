@@ -34,10 +34,10 @@ GetExpressCheckoutDetails API call:
 	
 	var results = paypal.GetExpressCheckoutDetails(fields);
 	
-	var invoice = result["INVNUM"];
-	var email   = result["EMAIL"];
-	var first   = result["FIRSTNAME"];
-	var last    = result["LASTNAME"];
+	var invoice = results["INVNUM"];
+	var email   = results["EMAIL"];
+	var first   = results["FIRSTNAME"];
+	var last    = results["LASTNAME"];
 
 All the code is contained within PayPal.cs and is in the
 NeoSmart.PayPalNvp namespace.
