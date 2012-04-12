@@ -1,0 +1,43 @@
+paypalnvp-dotnet is a very light and simple library for the PayPal NVP
+API.
+
+paypalnvp-dotnet is developed and maintained by Mahmoud Al-Qudsi
+<mqudsi@neosmart.net> of NeoSmart Technologies <http://neosmart.net/>
+
+paypalnvp is a class designed to hide the nuances and communication with
+the PayPal backend from developers, without abstracting away the NVP
+API. It is meant to be used in tight conjunction with the official
+PayPal API reference <http://j.mp/HBkl7K>
+
+Usage:
+
+As mentioned above, the paypalnvp library does not attempt to abstract
+the underlying concepts away from the developer. Usage is as easy as
+creating a Dictionary<string, string> loaded with key-value pairs per
+the official PayPal reference, instantiating a new PayPal(user, pass,
+sig) object with the NVP credentials, then calling the desired method.
+
+Internally, the paypalnvp library takes care of the authentication,
+version, and method NVP key-value pairs. You only need to supply the
+method-specific key-value pairs. The library takes care of all
+case-sensitivity related issues for the key value, as well as any and
+all encoding-related issues for both the key and the value.
+
+For instance, the following is a sample usage of the
+GetExpressCheckoutDetails API call:
+
+	var paypal = new PayPal(YOUR_USER, YOUR_PASS, YOUR_SIGNATURE);
+	
+	var fields = new Dictionary<string, string>() {
+		{"Token", "paypaltoken"}
+	};
+	
+	var results = paypal.GetExpressCheckoutDetails(fields);
+	
+	var invoice = result["INVNUM"];
+	var email   = result["EMAIL"];
+	var first   = result["FIRSTNAME"];
+	var last    = result["LASTNAME"];
+
+All the code is contained within PayPal.cs and is in the
+NeoSmart.PayPalNvp namespace.
