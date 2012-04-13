@@ -32,12 +32,6 @@ namespace NeoSmart.PayPalNvp
                 sb.AppendFormat("{0}={1}&", Uri.EscapeUriString(kv.Key.ToUpper()), Uri.EscapeUriString(kv.Value));
             }
 
-            //Remove trailing &
-            if (sb.Length > 0)
-            {
-                sb.Remove(sb.Length - 1, 1);
-            }
-
             return sb.ToString();
         }
 
