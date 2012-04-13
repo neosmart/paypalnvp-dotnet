@@ -50,7 +50,7 @@ namespace NeoSmart.PayPalNvp
             {
                 string[] halves = pair.Split('=');
 
-                nvpMap[halves[0]] = halves.Length == 2 ? halves[1] : string.Empty;
+                nvpMap[Uri.UnescapeDataString(halves[0])] = halves.Length == 2 ? Uri.UnescapeDataString(halves[1]) : string.Empty;
             }
 
             return nvpMap;
