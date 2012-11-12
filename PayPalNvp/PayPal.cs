@@ -29,7 +29,8 @@ namespace NeoSmart.PayPalNvp
 
             foreach (var kv in fields)
             {
-                sb.AppendFormat("{0}={1}&", Uri.EscapeUriString(kv.Key.ToUpper()), Uri.EscapeUriString(kv.Value));
+                string encodedValue = string.IsNullOrEmpty(kv.Value) ? string.Empty : Uri.EscapeUriString(kv.Value);
+                sb.AppendFormat("{0}={1}&", Uri.EscapeUriString(kv.Key.ToUpper()), encodedValue);
             }
 
             return sb.ToString();
