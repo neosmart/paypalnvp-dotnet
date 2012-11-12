@@ -107,5 +107,23 @@ namespace NeoSmart.PayPalNvp
             string method = "RefundTransaction";
             return GenericNvp(method, fields);
         }
+
+        public Dictionary<string, string> DoDirectPayment(Dictionary<string, string> fields)
+        {
+            string method = "DoDirectPayment";
+            return GenericNvp(method, fields);
+        }
+
+        public Dictionary<string, string> DoCapture(Dictionary<string, string> fields)
+        {
+            string method = "DoCapture";
+            return GenericNvp(method, fields);
+        }
+
+        public Dictionary<string, string> GetTransactionDetails(Dictionary<string, string> fields)
+        {
+            string method = "GetTransactionDetails";
+            return GenericNvp(method, fields);
+        }
     }
 }
