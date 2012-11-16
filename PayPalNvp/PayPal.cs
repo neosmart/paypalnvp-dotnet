@@ -120,6 +120,12 @@ namespace NeoSmart.PayPalNvp
             return GenericNvp(method, fields);
         }
 
+        public Dictionary<string, string> DoVoid(Dictionary<string, string> fields)
+        {
+            string method = "DoVoid";
+            return GenericNvp(method, fields);
+        }
+
         public Dictionary<string, string> GetTransactionDetails(Dictionary<string, string> fields)
         {
             string method = "GetTransactionDetails";
