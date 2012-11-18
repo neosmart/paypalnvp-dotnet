@@ -131,5 +131,17 @@ namespace NeoSmart.PayPalNvp
             string method = "GetTransactionDetails";
             return GenericNvp(method, fields);
         }
+
+        public bool WasSuccessful(Dictionary<string, string> response)
+        {
+            string ack;
+            if (response.TryGetValue("ACK", out ack))
+            {
+                return string.Compare(response["ACK"], "success", StringComparison.CurrentCultureIgnoreCase) == 0 ||
+                       string.Compare(response["ACK"], "successWithWarning", StringComparison.CurrentCultureIgnoreCase) == 0;
+            }
+
+            return false;
+        }
     }
 }
