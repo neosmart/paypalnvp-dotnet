@@ -8,7 +8,7 @@ namespace NeoSmart.PayPalNvp
 {
     public class PayPal
     {
-        public const double NvpVersion = 87.0;
+        public const double NvpVersion = 88.0;
         public const string NvpEndPoint = "https://api-3t.paypal.com/nvp";
         //public const string NvpEndPoint = "https://api-3t.sandbox.paypal.com/nvp";
 
