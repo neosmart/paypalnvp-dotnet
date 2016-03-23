@@ -8,19 +8,34 @@ namespace NeoSmart.PayPalNvp
 {
     public class PayPal
     {
-        public const double NvpVersion = 88.0;
-        public const string NvpEndPoint = "https://api-3t.paypal.com/nvp";
-        //public const string NvpEndPoint = "https://api-3t.sandbox.paypal.com/nvp";
+        public double NvpVersion = 88.0;
+        public EndPoint EndPoint { get; set; }
 
-        private string _user;
-        private string _pass;
-        private string _sig;
-
-        public PayPal(string user, string pass, string signature)
+        private string NvpEndPoint
         {
+            get
+            {
+                return EndPoint == EndPoint.Production
+                    ? "https://api-3t.paypal.com/nvp"
+                    : "https://api-3t.sandbox.paypal.com/nvp";
+            }
+        }
+
+        private readonly string _user;
+        private readonly string _password;
+        private readonly string _signature;
+
+        public PayPal(EndPoint endPoint, string user, string password, string signature)
+        {
+            EndPoint = endPoint;
             _user = user;
-            _pass = pass;
-            _sig = signature;
+            _password = password;
+            _signature = signature;
+        }
+
+        public PayPal(string user, string password, string signature)
+            : this(EndPoint.Production, user, password, signature)
+        {
         }
 
         private string EncodeNvpString(Dictionary<string, string> fields)
@@ -55,8 +70,8 @@ namespace NeoSmart.PayPalNvp
         {
             //Add some default PayPal-specific values
             fields["USER"] = _user;
-            fields["PWD"] = _pass;
-            fields["SIGNATURE"] = _sig;
+            fields["PWD"] = _password;
+            fields["SIGNATURE"] = _signature;
             fields["VERSION"] = NvpVersion.ToString();
             fields["METHOD"] = method;
 
@@ -134,14 +149,40 @@ namespace NeoSmart.PayPalNvp
 
         public bool WasSuccessful(Dictionary<string, string> response)
         {
+            string unused1, unused2;
+            return WasSuccessful(response, out unused1, out unused2);
+        }
+
+        public bool WasSuccessful(Dictionary<string, string> response, out string shortError)
+        {
+            string unused;
+            return WasSuccessful(response, out shortError, out unused);
+        }
+
+        public bool WasSuccessful(Dictionary<string, string> response, out string shortError, out string longError)
+        {
             string ack;
+            var result = false;
             if (response.TryGetValue("ACK", out ack))
             {
-                return string.Compare(response["ACK"], "success", StringComparison.CurrentCultureIgnoreCase) == 0 ||
+                result = string.Compare(response["ACK"], "success", StringComparison.CurrentCultureIgnoreCase) == 0 ||
                        string.Compare(response["ACK"], "successWithWarning", StringComparison.CurrentCultureIgnoreCase) == 0;
             }
 
-            return false;
+            response.TryGetValue("L_SHORTMESSAGE0", out shortError);
+            response.TryGetValue("L_LONGMESSAGE0", out longError);
+
+            if (longError == null)
+            {
+                longError = string.Empty;
+            }
+
+            if (shortError == null)
+            {
+                shortError = string.Empty;
+            }
+
+            return result;
         }
     }
 }
