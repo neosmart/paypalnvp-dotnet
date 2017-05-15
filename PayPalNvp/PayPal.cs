@@ -83,14 +83,16 @@ namespace NeoSmart.PayPalNvp
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = nvpstr.Length;
-            using (var writer = new StreamWriter(request.GetRequestStream()))
+            using (var requestStream = request.GetRequestStream())
+            using (var writer = new StreamWriter(requestStream))
             {
                 writer.Write(nvpstr);
             }
 
             //Get the result
-            var response = request.GetResponse();
-            using (var reader = new StreamReader(response.GetResponseStream()))
+            using (var response = request.GetResponse())
+            using (var responseStream = response.GetResponseStream())
+            using (var reader = new StreamReader(responseStream))
             {
                 nvpstr = reader.ReadToEnd();
             }
