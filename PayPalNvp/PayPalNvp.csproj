@@ -1,49 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{440CF006-AB6D-4C94-9178-E9E7897EE045}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <TargetFrameworks>netstandard1.3;net45;net20;net30;net40</TargetFrameworks>
     <RootNamespace>NeoSmart.PayPalNvp</RootNamespace>
     <AssemblyName>NeoSmart.PayPalNvp</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>0.1</Version>
+    <Authors>NeoSmart Technologies, Mahmoud Al-Qudsi</Authors>
+    <Company>NeoSmart Technologies</Company>
+    <Product>NeoSmart.AsyncLock</Product>
+    <Description>A very minimal .NET library for the PayPal NVP API.</Description>
+    <Copyright>Copyright NeoSmart Technologies 2012 - 2017</Copyright>
+    <PackageLicenseUrl>https://cdn.rawgit.com/neosmart/paypalnvp-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/neosmart/paypalnvp-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/neosmart/paypalnvp-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>paypal, nvp, payments, neosmart</PackageTags>
+    <PackageReleaseNotes>Initial release on NuGet</PackageReleaseNotes>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="EndPoint.cs" />
-    <Compile Include="PayPal.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
 </Project>
