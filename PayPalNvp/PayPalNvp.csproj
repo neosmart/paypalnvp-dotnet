@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net20;net30;net40;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net20;net40;net45</TargetFrameworks>
     <RootNamespace>NeoSmart.PayPalNvp</RootNamespace>
     <AssemblyName>NeoSmart.PayPalNvp</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
