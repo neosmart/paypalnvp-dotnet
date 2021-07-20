@@ -66,7 +66,7 @@ namespace NeoSmart.PayPalNvp
             string method = "DoExpressCheckoutPayment";
             return GenericNvp(method, fields);
         }
-        
+
         public Dictionary<string, string> RefundTransaction(Dictionary<string, string> fields)
         {
             string method = "RefundTransaction";
