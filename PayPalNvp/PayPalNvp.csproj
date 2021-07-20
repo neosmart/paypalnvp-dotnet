@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net20;net40;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net20;net40;net45;netcoreapp3.1;net5.0</TargetFrameworks>
     <RootNamespace>NeoSmart.PayPalNvp</RootNamespace>
     <AssemblyName>NeoSmart.PayPalNvp</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>0.1</Version>
-    <Authors>NeoSmart Technologies, Mahmoud Al-Qudsi</Authors>
+    <Version>1.0</Version>
+    <Authors>Mahmoud Al-Qudsi, mqudsi, neosmart</Authors>
     <Company>NeoSmart Technologies</Company>
     <Product>PayPal NVP library</Product>
     <Description>A very minimal .NET library for the PayPal NVP API, supporting .NET 2.0+ and ASP.NET Core.</Description>
-    <Copyright>Copyright NeoSmart Technologies 2012 - 2017</Copyright>
-    <PackageLicenseUrl>https://cdn.rawgit.com/neosmart/paypalnvp-dotnet/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright NeoSmart Technologies 2012 - 2021</Copyright>
+    <PackageLicense>MIT</PackageLicense>
     <PackageProjectUrl>https://github.com/neosmart/paypalnvp-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/neosmart/paypalnvp-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -21,13 +21,13 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <PackageReference Include="System.Net.Http">
-      <Version>4.3.2</Version>
+      <Version>4.3.4</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="System.Net.Http">
-      <Version>4.3.2</Version>
+      <Version>4.3.4</Version>
     </PackageReference>
   </ItemGroup>
 
